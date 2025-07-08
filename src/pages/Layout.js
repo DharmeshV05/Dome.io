@@ -1,36 +1,119 @@
+import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
+import "../CSS/Layout.css";
 
+const logo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW3zR7U8WXN_VBLKy_ZCx4sbkOIqgVYa5uhw&s";
 
-const logo = "https://images.contentstack.io/v3/assets/bltc5a09bf374882538/blta3aaa5df371a794f/6204d56a214fe9266428cec5/Logo.svg";
+const getSidebarWidth = (isCollapsed, isMobile) => {
+  if (isMobile) return 0;
+  return isCollapsed ? 80 : 240;
+};
 
 const Layout = () => {
-  return (
-    <>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-      <div className="topnav">
-      <div className="container flex jst-spac-btw">
-        <div className="flex" title="CS.io">
-        <a href="https://www.Dome.io"><img  alt="LOGO" src={logo} /></a>
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleCollapse = () => {
+    setIsCollapsed((prev) => !prev);
+  };
+
+  // Hide sidebar on mobile when menu is closed
+  const sidebarClass = `sidebar${isMenuOpen ? " open" : ""}${isCollapsed ? " collapsed" : ""}`;
+
+  // Calculate main-content margin-left
+  const mainContentStyle = {
+    marginLeft: isMobile ? 0 : isCollapsed ? 80 : 240,
+    transition: "margin-left 0.3s ease"
+  };
+
+  return (
+    <div className="layout-root">
+      <aside className={sidebarClass} aria-label="Sidebar navigation">
+        <div className="sidebar-header">
+          <Link to="/" aria-label="Dome.io Home" className="sidebar-logo" onClick={() => setIsMenuOpen(false)}>
+            <img alt="Dome.io Logo" src={logo} />
+          </Link>
+          <button
+            className="collapse-btn"
+            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            onClick={toggleCollapse}
+          >
+            <i className={isCollapsed ? "fas fa-chevron-right" : "fas fa-chevron-left"}></i>
+          </button>
+          <button
+            className="hamburger sidebar-hamburger"
+            aria-label="Toggle sidebar menu"
+            onClick={toggleMenu}
+          >
+            <i className={isMenuOpen ? "fas fa-times" : "fas fa-bars"}></i>
+          </button>
         </div>
-        <ul className="flex">
-          <li><Link to="/#" className="link" title="Home">HOME</Link></li>
-          <li><Link to="/service" className="link" title="Services">SERVICES</Link></li>
-          <li><Link to="/" className="link" title="Resources">RESOURCES</Link></li>
-          <li><Link to="/contact" className="link" title="Partners">PARTNERS</Link></li>
-          <li><Link to="/blog" className="link" title="Blog">BLOG</Link></li>
-          <li><Link to="/aboutus" className="link" title="About">ABOUT</Link></li>
+        <ul className="nav-links">
+          <li>
+            <Link to="/" className="link" title="Home" onClick={toggleMenu} aria-label="Home">
+              <i className="fas fa-home"></i>
+              {!isCollapsed && <span>Home</span>}
+            </Link>
+          </li>
+          <li>
+            <Link to="/services" className="link" title="Services" onClick={toggleMenu} aria-label="Services">
+              <i className="fas fa-cogs"></i>
+              {!isCollapsed && <span>Services</span>}
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" className="link" title="About" onClick={toggleMenu} aria-label="About">
+              <i className="fas fa-info-circle"></i>
+              {!isCollapsed && <span>About</span>}
+            </Link>
+          </li>
+          <li>
+            <Link to="/blog" className="link" title="Blog" onClick={toggleMenu} aria-label="Blog">
+              <i className="fas fa-blog"></i>
+              {!isCollapsed && <span>Blog</span>}
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className="link" title="Contact" onClick={toggleMenu} aria-label="Contact">
+              <i className="fas fa-envelope"></i>
+              {!isCollapsed && <span>Contact</span>}
+            </Link>
+          </li>
+          <li>
+            <Link to="/login" className="login-btn" title="Login" onClick={toggleMenu} aria-label="Login">
+              <i className="fas fa-sign-in-alt"></i>
+              {!isCollapsed && <span>Login</span>}
+            </Link>
+          </li>
+          <li>
+            <Link to="/signup" className="signup-btn" title="Sign Up" onClick={toggleMenu} aria-label="Sign Up">
+              <i className="fas fa-user-plus"></i>
+              {!isCollapsed && <span>Sign Up</span>}
+            </Link>
+          </li>
         </ul>
-        <div className="btn-links">
-          <Link to="/login" href="javascript:void(0)" className="login-btn">LOGIN</Link>
-          <Link to="/signup" href="javascript:void(0)" className="signup-btn">SIGN UP</Link>
-        </div>
-      </div>
-      </div>
-  
-      <Outlet />
-    </>
-  
-  )
+      </aside>
+      {isMobile && isMenuOpen && (
+        <div className="sidebar-backdrop" onClick={() => setIsMenuOpen(false)} />
+      )}
+      <main className="main-content" style={mainContentStyle}>
+        <Outlet />
+      </main>
+    </div>
+  );
 };
 
 export default Layout;

@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import "../CSS/Blog.css";
+import { useParams, Link } from "react-router-dom";
 
 const demoWorks = [
   {
@@ -60,45 +59,45 @@ const demoWorks = [
   },
 ];
 
-function Blog() {
+function BlogDetail() {
+  const { id } = useParams();
+  const demo = demoWorks.find((d) => d.id === id);
+
+  if (!demo) {
+    return (
+      <main className="container">
+        <h2>Blog Post Not Found</h2>
+        <Link to="/blog">Back to Blog</Link>
+      </main>
+    );
+  }
+
   return (
-    <section className="container blog-section" aria-labelledby="blog-title">
-      <h2 id="blog-title" className="blog-title">Demo Work Examples for Dome.io's AI-Driven Services</h2>
-      <p className="section-lead">
-        Explore how Dome.io's innovative solutions in AI Development, API Automation, Mobile & Web Development, and Cloud & IoT Solutions have transformed businesses with cutting-edge technology.
-      </p>
-      <div className="blog-grid">
-        {demoWorks.map((demo) => (
-          <article key={demo.id} className={`demo demo-${demo.id}`}>
-            <i className={demo.icon} aria-hidden="true" />
-            <h3>{demo.title}</h3>
-            <p className="demo-service">Service: {demo.service}</p>
-            <p>{demo.description}</p>
-            <div className="demo-details">
-              <h4>Technologies Used:</h4>
-              <ul>
-                {demo.technologies.map((tech, index) => (
-                  <li key={index}>{tech}</li>
-                ))}
-              </ul>
-              <h4>Outcomes:</h4>
-              <ul>
-                {demo.outcomes.map((outcome, index) => (
-                  <li key={index}>{outcome}</li>
-                ))}
-              </ul>
-            </div>
-            <Link to={`/blog/${demo.id}`} className="cta" aria-label={`Read more about ${demo.title}`}>
-              Read More <i className="fas fa-angle-right" aria-hidden="true" />
-            </Link>
-          </article>
-        ))}
-      </div>
-    </section>
+    <main className="container blog-detail" aria-labelledby="blog-detail-title">
+      <Link to="/blog" className="back-link">&larr; Back to Blog</Link>
+      <article>
+        <h2 id="blog-detail-title">
+          <i className={demo.icon} aria-hidden="true" /> {demo.title}
+        </h2>
+        <p className="demo-service">Service: {demo.service}</p>
+        <p>{demo.description}</p>
+        <div className="demo-details">
+          <h4>Technologies Used:</h4>
+          <ul>
+            {demo.technologies.map((tech, idx) => (
+              <li key={idx}>{tech}</li>
+            ))}
+          </ul>
+          <h4>Outcomes:</h4>
+          <ul>
+            {demo.outcomes.map((outcome, idx) => (
+              <li key={idx}>{outcome}</li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    </main>
   );
 }
 
-// Placeholder for BlogDetail import
-// import BlogDetail from "./BlogDetail";
-
-export default Blog;
+export default BlogDetail; 

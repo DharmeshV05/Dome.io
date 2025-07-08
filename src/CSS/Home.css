@@ -1,0 +1,495 @@
+.hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #3a3a6a 50%, #23a6d5 100%);
+  padding: 6rem 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.but.primary {
+  background-color: #e73c7e;
+}
+
+.but.primary:hover {
+  background-color: #c72e6b;
+}
+
+.but.secondary {
+  /* background-color: transparent; *
+  /* border: 2px solid #fff; */
+}
+
+.but.secondary:hover {
+  background-color: #2eb8b8;
+  /* background-color: rgba(255, 255, 255, 0.1); */
+}
+
+.combined-section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-lead {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.1rem;
+  color: #555;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+
+.services-subsection {
+  background: #f8f9fa; /* Light gray */
+  padding: 3rem 2rem;
+  border-radius: 12px;
+}
+
+.benefits-subsection {
+  background: #f5f5ff; /* Light purple */
+  padding: 3rem 2rem;
+  border-radius: 12px;
+}
+
+.case-studies-subsection {
+  background: #ffffff; /* White */
+  padding: 3rem 2rem;
+  border-radius: 12px;
+}
+
+.subsection-lead {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: #555;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.section-divider {
+  height: 2px;
+  /* background: #665df5;  */
+  margin: 3rem 0;
+  border: none;
+}
+
+.services-grid,
+.benefits-grid,
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.service-card,
+.benefit-item,
+.case-study {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover,
+.benefit-item:hover,
+.case-study:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.service-card i,
+.benefit-item i {
+  font-size: 3rem;
+  color: #665df5;
+  margin-bottom: 1.5rem;
+}
+
+.service-card h3,
+.benefit-item h3,
+.case-study h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.service-card p,
+.benefit-item p,
+.case-study p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.service-card .cta,
+.case-study .cta {
+  display: inline-block;
+  color: #665df5;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.service-card .cta:hover,
+.case-study .cta:hover {
+  color: #544af4;
+  text-decoration: underline;
+}
+
+.cta-section {
+  background: #f8f9fa;
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.cta-section .jst-ctr {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.footer {
+  background: #1a1a1a;
+  color: #f5f5f5;
+  padding: 4rem 0;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-column h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column a.down {
+  color: #ccc;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.footer-column a.down:hover {
+  color: #665df5;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-link i {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.social-link:hover {
+  background-color: #665df5;
+  transform: scale(1.1);
+}
+
+.social-link:focus {
+  outline: 2px solid #665df5;
+  outline-offset: 2px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.footer-bottom a {
+  color: #23a6d5;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: #665df5;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 0;
+    min-height: 60vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .combined-section {
+    padding: 3rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-lead,
+  .subsection-lead {
+    font-size: 0.95rem;
+  }
+
+  .services-subsection,
+  .benefits-subsection,
+  .case-studies-subsection {
+    padding: 2rem 1rem;
+  }
+
+  .services-grid,
+  .benefits-grid,
+  .case-studies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .service-card i,
+  .benefit-item i {
+    font-size: 2.5rem;
+  }
+
+  .service-card h3,
+  .benefit-item h3,
+  .case-study h3 {
+    font-size: 1.3rem;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+
+  .social-link i {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-card,
+  .benefit-item,
+  .case-study {
+    padding: 1rem;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .main-content {
+    padding: 1rem 0.5rem;
+    box-sizing: border-box;
+  }
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+.testimonials-section {
+  margin: 3rem 0;
+  padding: 2rem 0;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.testimonials-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.testimonial {
+  background: #fff;
+  border-left: 4px solid #2eb8b8;
+  padding: 1.5rem 1.25rem 1.25rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  font-size: 1.05rem;
+  color: #222;
+  position: relative;
+}
+
+.testimonial footer {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .testimonials-section {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.newsletter-section {
+  background: #eaf6f6;
+  padding: 2rem 0;
+  margin: 2rem 0 0 0;
+  border-radius: 12px;
+}
+
+.newsletter-section .container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.newsletter-form input[type="email"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #b2dfdb;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 60%;
+  max-width: 300px;
+}
+
+.newsletter-form button {
+  padding: 0.75rem 1.5rem;
+  background: #2eb8b8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.newsletter-form button:hover {
+  background: #229999;
+}
+
+@media (max-width: 600px) {
+  .newsletter-form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .newsletter-form input[type="email"] {
+    width: 100%;
+    max-width: 100%;
+  }
+}

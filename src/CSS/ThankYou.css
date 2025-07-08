@@ -1,0 +1,39 @@
+.thank-you {
+  max-width: 600px;
+  width: 90%;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.thank-you h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.thank-you p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.thank-you .but {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .thank-you {
+    padding: 1.5rem;
+  }
+
+  .thank-you h2 {
+    font-size: 1.5rem;
+  }
+
+  .thank-you p {
+    font-size: 0.9rem;
+  }
+}
