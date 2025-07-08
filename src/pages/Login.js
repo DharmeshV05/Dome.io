@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../CSS/Sign.css"; // Adjust the path as necessary
+import "../CSS/Sign.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
