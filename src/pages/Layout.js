@@ -4,9 +4,8 @@ import "../CSS/Layout.css";
 
 const logo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW3zR7U8WXN_VBLKy_ZCx4sbkOIqgVYa5uhw&s";
 
-const getSidebarWidth = (isCollapsed, isMobile, isTablet) => {
+const getSidebarWidth = (isCollapsed, isMobile) => {
   if (isMobile) return 0;
-  if (isTablet) return isCollapsed ? 60 : 200;
   return isCollapsed ? 80 : 240;
 };
 
@@ -14,12 +13,10 @@ const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isTablet, setIsTablet] = useState(window.innerWidth > 768 && window.innerWidth <= 900);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
-      setIsTablet(window.innerWidth > 768 && window.innerWidth <= 900);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -37,9 +34,8 @@ const Layout = () => {
   const sidebarClass = `sidebar${isMenuOpen ? " open" : ""}${isCollapsed ? " collapsed" : ""}`;
 
   // Calculate main-content margin-left
-  const sidebarWidth = getSidebarWidth(isCollapsed, isMobile, isTablet);
   const mainContentStyle = {
-    marginLeft: sidebarWidth,
+    marginLeft: isMobile ? 0 : isCollapsed ? 80 : 240,
     transition: "margin-left 0.3s ease"
   };
 
